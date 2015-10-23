@@ -28,11 +28,14 @@ public class Salinas_3_challenge2 extends Application {
         Canvas canvas = new Canvas(700, 550);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         GraphicsContext gc1 = canvas.getGraphicsContext2D();
+        drawSky(gc,0,0,20000,20000);
         drawText(gc);
         drawHouseWalls(gc,260,260,200,200);
-        drawDoor(gc,350,400,40,60);
+        drawDoor(gc,340,400,40,60);
         drawSun(gc,41); 
-        //drawHouseRoof(gc1,140,120,40,40);
+        drawWindow(gc1,280,300,40,40);
+        drawWindow2(gc1,400,300,40,40);
+        drawRoof(gc1);
         root.getChildren().add(canvas);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -60,7 +63,14 @@ public class Salinas_3_challenge2 extends Application {
         gc.setFill(Color.RED);
         gc.fillRoundRect(x,y,w,h,10,10);
     }
-    private void drawHouseRoof(GraphicsContext gc1,int x,int y, int w,int h){
+    private void drawWindow(GraphicsContext gc1,int x,int y, int w,int h){
+        gc1.setFill(Color.BLACK);
+        //gc.fillPolygon(xPoints, yPoints, d);
+        gc1.fillRoundRect(x,y,w,h,10,10);
+        
+       
+    }
+    private void drawWindow2(GraphicsContext gc1,int x,int y, int w,int h){
         gc1.setFill(Color.BLACK);
         //gc.fillPolygon(xPoints, yPoints, d);
         gc1.fillRoundRect(x,y,w,h,10,10);
@@ -71,4 +81,16 @@ public class Salinas_3_challenge2 extends Application {
         gc.setFill(Color.BLACK);
         gc.fillRoundRect(x,y,w,h,10,10);
     }
+    private void drawSky(GraphicsContext gc,int x,int y,int w, int h){
+        gc.setFill(Color.SKYBLUE);
+        gc.fillRoundRect(x,y,w,h,10,10);
+    }
+    private void drawRoof(GraphicsContext gc1){
+        gc1.setFill(Color.BLACK);
+        //gc.fillPolygon(xPoints, yPoints, d);
+        gc1.fillPolygon(new double[]{260,310,460},
+                 new double[]{260,100,260}, 3);
+        
+    }
+    
 }
